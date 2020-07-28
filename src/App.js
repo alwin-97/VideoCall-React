@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import firebase from "firebase";
 import StyleFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -38,17 +38,52 @@ class App extends Component {
         return (
             <div className="App">
                 {this.state.isSignedIn ? (
-                        <span>
-                        <div>Signed In !</div>
-                        <button onClick={() => firebase.auth().signOut()}> Sign out !</button>
-                        <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-                        <img src={firebase.auth().currentUser.photoURL} alt={"Profile Image"}/>
-                    </span>)
+                        <div>
+                            <div className="split left">
+                                <div className="centered">
+                                    <h1 style={{color:"white"}}>Welcome {firebase.auth().currentUser.displayName}</h1><br/>
+                                    <img src={firebase.auth().currentUser.photoURL} alt={"Profile Image"}/><br/>
+                                    <div style={{color:"white"}}>
+                                        <p>{firebase.auth().currentUser.displayName}</p>
+                                        <p>{firebase.auth().currentUser.email}</p>
+                                        <p>{firebase.auth().currentUser.phoneNumber}</p>
+                                    </div>
+                                    <button onClick={() => firebase.auth().signOut()} style={{backgroundColor: "#db4437", color:"white",padding:15}}> Sign out !</button>
+                                </div>
+                            </div>
+
+                            <div className="split right">
+                                <div className="centered">
+
+                                </div>
+                            </div>
+                    </div>)
                     :
-                    (<StyledFirebaseAuth
-                        uiConfig={this.uiConfig}
-                        firebaseAuth={firebase.auth()}
-                    />)
+                    (<div style={{backgroundColor: "grey"}}>
+                        <br/><br/>
+                        <img src={logo} style={{height: 150}}/>
+                        <h1 style={{color: "white"}}>Welcome to VideoCall App</h1>
+                        <br/><br/>
+                        <h4>SignIn to continue ...</h4>
+                        <StyledFirebaseAuth
+                            uiConfig={this.uiConfig}
+                            firebaseAuth={firebase.auth()}
+                        />
+                        <br/><br/><br/><br/><br/><br/><br/><br/>
+                        <br/><br/><br/><br/><br/><br/>
+                        <footer style={{color: "white"}}>
+                            <div>
+                            <span style={{textAlign: "center"}}>
+                                About US | Contact US | Support US
+                            </span>
+                            </div>
+                            <br/>
+                            <span style={{textAlign: "center"}}>@VideoCall. All Rights Recieved</span>
+                            <br/>
+                            <span style={{textAlign: "center"}}>Made in <span style={{color: "red"}}>❤</span> with Open Source Software</span>
+                            <br/><br/>
+                        </footer>
+                    </div>)
                 }
             </div>
         );

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import logo from './logo.png';
 import firebase from "firebase";
+import logo from "./logo.png";
 import StyleFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import {StyledFirebaseAuth} from "react-firebaseui/index";
+import CreateRoom from "./CreateRoom";
 
 firebase.initializeApp({
     apiKey: "AIzaSyBF0G562vX2uA3zbBBM_oY6L5j-l1hdmfE",
@@ -53,7 +54,7 @@ class Home extends Component {
 
                             <div className="split right">
                                 <div className="centered">
-
+                                <CreateRoom/>
                                 </div>
                             </div>
                         </div>)
@@ -61,6 +62,7 @@ class Home extends Component {
                     (<div style={{backgroundColor: "grey"}}>
                         <br/><br/>
                         <img src={logo} style={{height: 150}}/>
+                        <br/>
                         <h1 style={{color: "white"}}>Welcome to VideoCall App</h1>
                         <br/><br/>
                         <h4>SignIn to continue ...</h4>
@@ -68,7 +70,7 @@ class Home extends Component {
                             uiConfig={this.uiConfig}
                             firebaseAuth={firebase.auth()}
                         />
-                        <br/><br/><br/><br/><br/><br/><br/><br/>
+                        <br/><br/><br/><br/><br/><br/>
                         <br/><br/><br/><br/><br/><br/>
                         <footer style={{color: "white"}}>
                             <div>

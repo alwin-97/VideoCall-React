@@ -131,10 +131,15 @@ const Room = (props) => {
     }
 
     return (
-        <div>
+        <div className={""} style={{backgroundColor:"grey"}}>
+            <br/><br/><br/><br/>
+            <h1 style={{color:"white"}}>Video Calling</h1>
+            <br/>
             <video controls style={{height: 500, width: 500}} autoPlay ref={userVideo} />
             <video controls style={{height: 500, width: 500}} autoPlay ref={partnerVideo} />
-            <button onClick={shareScreen}>Share Screen</button>
+            <br/> <br/> <br/> <br/>
+            <button onClick={shareScreen} className={"btn btn-warning"}>Share Screen</button> <button className={"btn btn-danger"}>End Call</button>
+            <br/> <br/> <br/> <br/><br/><br/><br/><br/>
         </div>
     );
 };

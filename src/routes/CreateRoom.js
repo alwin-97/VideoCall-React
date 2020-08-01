@@ -15,7 +15,7 @@ import {Link} from 'react-router-dom';
 
 function CreateRoom() {
         return(
-          <Link to={"/room/"+uuid()}>Create Room</Link>
+                     <Link to={"/room/"+uuid()} style={{color:"white",textDecoration:false}} className={"btn btn-success"}>Create Room</Link>
         );
 }
 

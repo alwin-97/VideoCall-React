@@ -41,22 +41,26 @@ class Home extends Component {
                         <div>
                             <div className="split left">
                                 <div className="centered">
-                                    <h1 style={{color:"white"}}>Welcome {firebase.auth().currentUser.displayName}</h1><br/>
+                                    <h1 style={{color:"white"}}>Welcome !<br/>{firebase.auth().currentUser.displayName}</h1><br/>
                                     <img src={firebase.auth().currentUser.photoURL} alt={"Profile Image"}/><br/>
                                     <div style={{color:"white"}}>
                                         <p>{firebase.auth().currentUser.displayName}</p>
                                         <p>{firebase.auth().currentUser.email}</p>
                                         <p>{firebase.auth().currentUser.phoneNumber}</p>
                                     </div>
-                                    <button onClick={() => firebase.auth().signOut()} style={{backgroundColor: "#db4437", color:"white",padding:15}}> Sign out !</button>
+                                    <button onClick={() => firebase.auth().signOut()} className={"btn btn-danger"}> Sign out !</button>
                                 </div>
                             </div>
 
                             <div className="split right">
                                 <div className="centered">
+                                    <h4 style={{color:"white"}}>Mail id for inviting</h4>
+                                    <input type={"text"}/>
+                                    <br/><br/><br/>
                                 <CreateRoom/>
                                 </div>
                             </div>
+
                         </div>)
                     :
                     (<div style={{backgroundColor: "grey"}}>
@@ -71,7 +75,7 @@ class Home extends Component {
                             firebaseAuth={firebase.auth()}
                         />
                         <br/><br/><br/><br/><br/><br/>
-                        <br/><br/><br/><br/><br/><br/>
+                        <br/><br/><br/><br/><br/>
                         <footer style={{color: "white"}}>
                             <div>
                             <span style={{textAlign: "center"}}>

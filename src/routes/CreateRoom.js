@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { v1 as uuid } from "uuid";
+import {v1 as uuid} from "uuid";
 import {Link} from 'react-router-dom';
 
 // const CreateRoom = (props) => {
@@ -14,9 +14,10 @@ import {Link} from 'react-router-dom';
 // }
 
 function CreateRoom() {
-        return(
-                     <Link to={"/room/"+uuid()} style={{color:"white",textDecoration:false}} className={"btn btn-success"}>Create Room</Link>
-        );
+    return (
+        <Link to={"/room/" + uuid()} style={{color: "white", textDecoration: false}} className={"btn btn-success"}>Create
+            Room</Link>
+    );
 }
 
 export default CreateRoom;

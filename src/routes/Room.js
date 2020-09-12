@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, {useRef, useEffect} from "react";
 import io from "socket.io-client";
+import logo from "./logo.png";
 
 const Room = (props) => {
     const userVideo = useRef();
@@ -11,7 +12,7 @@ const Room = (props) => {
     const senders = useRef([]);
 
     useEffect(() => {
-        navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
+        navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(stream => {
             userVideo.current.srcObject = stream;
             userStream.current = stream;
 
@@ -120,26 +121,44 @@ const Room = (props) => {
         partnerVideo.current.srcObject = e.streams[0];
     };
 
-    function shareScreen(){
-        navigator.mediaDevices.getDisplayMedia({ cursor:true}).then(stream =>{
+    function shareScreen() {
+        navigator.mediaDevices.getDisplayMedia({cursor: true}).then(stream => {
             const screenTrack = stream.getTracks()[0];
             senders.current.find(sender => sender.track.kind === 'video').replaceTrack(screenTrack);
-            screenTrack.onended = function(){
+            screenTrack.onended = function () {
                 senders.current.find(sender => sender.track.kind === "video").replaceTrack(userStream.current.getTracks()[1]);
             }
         })
     }
 
     return (
-        <div className={""} style={{backgroundColor:"grey"}}>
-            <br/><br/><br/><br/>
-            <h1 style={{color:"white"}}>Video Calling</h1>
+        <div className={""} style={{backgroundColor: "grey"}}>
+            <img src={logo} style={{height: 150}} alt={""}/>
             <br/>
-            <video controls style={{height: 500, width: 500}} autoPlay ref={userVideo} />
-            <video controls style={{height: 500, width: 500}} autoPlay ref={partnerVideo} />
-            <br/> <br/> <br/> <br/>
-            <button onClick={shareScreen} className={"btn btn-warning"}>Share Screen</button> <button className={"btn btn-danger"}>End Call</button>
-            <br/> <br/> <br/> <br/><br/><br/><br/><br/>
+            <h5>Meeting Url : {window.location.href}</h5>
+            <br/>
+            <label>Enter Email(s) to invite to the meeting</label>&nbsp;&nbsp;
+            <input type={"text"}/>&nbsp;&nbsp;
+            <button className={"btn btn-success"}>Send</button>
+            <br/><br/>
+            <div>
+                <video controls style={{height: 300}} autoPlay ref={userVideo}/>
+                <video controls style={{height: 300}} autoPlay ref={partnerVideo}/>
+            </div>
+            <button className={"btn btn-success"}>Record Meeting</button>
+            &nbsp;&nbsp;
+            <button onClick={shareScreen} className={"btn btn-warning"}>Share Screen</button>
+            &nbsp;&nbsp;
+            <button className={"btn btn-danger"}>End Call</button>
+            <br/><br/>
+            <div style={{color: "white"}}>
+                <span style={{textAlign: "center"}}>About US | Contact US | Support US </span>
+                <br/>
+                <span style={{textAlign: "center"}}>@VideoCall. All Rights Recieved</span>
+                <br/>
+                <span style={{textAlign: "center"}}>Made in <span style={{color: "red"}}>❤</span> with Open Source Software</span>
+                <br/><br/>
+            </div>
         </div>
     );
 };

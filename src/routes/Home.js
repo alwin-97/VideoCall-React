@@ -38,34 +38,41 @@ class Home extends Component {
         return (
             <div className="App">
                 {this.state.isSignedIn ? (
-                        <div>
-                            <div className="split left">
-                                <div className="centered">
-                                    <h1 style={{color:"white"}}>Welcome !<br/>{firebase.auth().currentUser.displayName}</h1><br/>
-                                    <img src={firebase.auth().currentUser.photoURL} alt={"Profile Image"}/><br/>
-                                    <div style={{color:"white"}}>
-                                        <p>{firebase.auth().currentUser.displayName}</p>
-                                        <p>{firebase.auth().currentUser.email}</p>
-                                        <p>{firebase.auth().currentUser.phoneNumber}</p>
-                                    </div>
-                                    <button onClick={() => firebase.auth().signOut()} className={"btn btn-danger"}> Sign out !</button>
-                                </div>
+                        <div style={{backgroundColor:"black"}}>
+                            <br/><br/>
+                            <img src={logo} style={{height: 150}} alt={""}/>
+                            <br/><br/>
+                            <h1 style={{color: "white"}}>Welcome {firebase.auth().currentUser.displayName}</h1>
+                            <p style={{color:"grey"}}>Simple and easy way to connect with friends !</p>
+                            <br/><br/>
+                            <img src={firebase.auth().currentUser.photoURL} alt={"Profile Image"}/><br/>
+                            <div style={{color: "white"}}>
+                                <p>{firebase.auth().currentUser.displayName}</p>
+                                <p>{firebase.auth().currentUser.email}</p>
+                                <p>{firebase.auth().currentUser.phoneNumber}</p>
                             </div>
+                            <button onClick={() => firebase.auth().signOut()} className={"btn btn-danger"}> Sign out !
+                            </button> &nbsp; &nbsp;
 
-                            <div className="split right">
-                                <div className="centered">
-                                    <h4 style={{color:"white"}}>Mail id for inviting</h4>
-                                    <input type={"text"}/>
-                                    <br/><br/><br/>
-                                <CreateRoom/>
+                            <CreateRoom/>
+                            <br/><br/><br/><br/><br/>
+                            <footer style={{color: "white"}}>
+                                <div>
+                            <span style={{textAlign: "center"}}>
+                                About US | Contact US | Support US
+                            </span>
                                 </div>
-                            </div>
-
+                                <br/>
+                                <span style={{textAlign: "center"}}>@VideoCall. All Rights Recieved</span>
+                                <br/>
+                                <span style={{textAlign: "center"}}>Made in <span style={{color: "red"}}>❤</span> with Open Source Software</span>
+                                <br/><br/>
+                            </footer>
                         </div>)
                     :
                     (<div style={{backgroundColor: "grey"}}>
                         <br/><br/>
-                        <img src={logo} style={{height: 150}}/>
+                        <img src={logo} style={{height: 150}} alt={""}/>
                         <br/>
                         <h1 style={{color: "white"}}>Welcome to VideoCall App</h1>
                         <br/><br/>

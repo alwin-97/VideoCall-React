@@ -2,6 +2,7 @@ import React, {useRef, useEffect} from "react";
 import io from "socket.io-client";
 import logo from "./logo.png";
 import {Link} from 'react-router-dom';
+import Record from "./recording";
 
 const Room = (props) => {
     const userVideo = useRef();
@@ -157,7 +158,8 @@ const Room = (props) => {
                 <video controls style={{width: 500}} autoPlay ref={partnerVideo}/>
             </div>
             <br/><br/>
-            <button className={"btn btn-success"}>Record Meeting</button>
+            {/*<button className={"btn btn-success"}>Record Meeting</button>*/}
+            <Record/>
             &nbsp;&nbsp;
             <button onClick={shareScreen} className={"btn btn-warning"}>Share Screen</button>
             &nbsp;&nbsp;

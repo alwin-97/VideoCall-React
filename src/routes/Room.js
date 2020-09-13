@@ -144,14 +144,14 @@ const Room = (props) => {
             <br/>
             <img src={logo} style={{height: 150}} alt={""}/>
             <br/>
-            <h5 style={{color:"white"}}>Meeting Url : {window.location.href}</h5>
+            <h5 style={{color: "white"}}>Meeting Url : {window.location.href}</h5>
             <br/>
             <form onSubmit={sendEmail} method={"post"}>
-                <label style={{color:"white"}}>Enter Email(s) to invite to the meeting</label>&nbsp;&nbsp;
+                <label style={{color: "white"}}>Enter Email(s) to invite to the meeting</label>&nbsp;&nbsp;
                 <input type={"text"} name={"to_email"}/>&nbsp;&nbsp;
                 <input type={"submit"} className={"btn btn-success"} value={"Send"}/>
             </form>
-            <br/><br/>
+            <br/>
             <div>
                 <video controls style={{width: 500}} autoPlay ref={userVideo}/>
                 &nbsp;&nbsp;
@@ -159,12 +159,14 @@ const Room = (props) => {
             </div>
             <br/><br/>
             {/*<button className={"btn btn-success"}>Record Meeting</button>*/}
-            <Record/>
-            &nbsp;&nbsp;
-            <button onClick={shareScreen} className={"btn btn-warning"}>Share Screen</button>
-            &nbsp;&nbsp;
-            <Link to={'/'} className={"btn btn-danger"}>End Call</Link>
-            <br/><br/> <br/><br/>
+            <span style={{alignItems:"center"}}>
+                <Record/>
+                <br/>
+                <button onClick={shareScreen} className={"btn btn-warning"}>Share Screen</button>
+                &nbsp;&nbsp;
+                <Link to={'/'} className={"btn btn-danger"}>End Call</Link>
+            </span>
+            <br/><br/> <br/>
             <div style={{color: "white"}}>
                 <span style={{textAlign: "center"}}>About US | Contact US | Support US </span>
                 <br/>

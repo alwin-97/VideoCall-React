@@ -4,6 +4,7 @@ import logo from "./logo.png";
 import StyleFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import {StyledFirebaseAuth} from "react-firebaseui/index";
 import CreateRoom from "./CreateRoom";
+import CreateTextRoom from "./CreateTextRoom";
 
 firebase.initializeApp({
     apiKey: "AIzaSyBF0G562vX2uA3zbBBM_oY6L5j-l1hdmfE",
@@ -54,8 +55,8 @@ class Home extends Component {
                             <br/><br/>
                             <button onClick={() => firebase.auth().signOut()} className={"btn btn-danger"}> Sign out !
                             </button> &nbsp; &nbsp;
-
-                            <CreateRoom/>
+                            <CreateRoom/> &nbsp; &nbsp;
+                            <CreateTextRoom/>
                             <br/><br/><br/><br/><br/>
                             <footer style={{color: "white"}}>
                                 <div>

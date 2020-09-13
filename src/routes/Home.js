@@ -45,12 +45,13 @@ class Home extends Component {
                             <h1 style={{color: "white"}}>Welcome {firebase.auth().currentUser.displayName}</h1>
                             <p style={{color:"grey"}}>Simple and easy way to connect with friends !</p>
                             <br/><br/>
-                            <img src={firebase.auth().currentUser.photoURL} alt={"Profile Image"}/><br/>
+                            <img src={firebase.auth().currentUser.photoURL} alt={"Profile Image"} height={"200"}/><br/>
                             <div style={{color: "white"}}>
                                 <p>{firebase.auth().currentUser.displayName}</p>
                                 <p>{firebase.auth().currentUser.email}</p>
                                 <p>{firebase.auth().currentUser.phoneNumber}</p>
                             </div>
+                            <br/><br/>
                             <button onClick={() => firebase.auth().signOut()} className={"btn btn-danger"}> Sign out !
                             </button> &nbsp; &nbsp;
 
@@ -70,13 +71,13 @@ class Home extends Component {
                             </footer>
                         </div>)
                     :
-                    (<div style={{backgroundColor: "grey"}}>
+                    (<div style={{backgroundColor: "black"}}>
                         <br/><br/>
                         <img src={logo} style={{height: 150}} alt={""}/>
-                        <br/>
+                        <br/> <br/>
                         <h1 style={{color: "white"}}>Welcome to VideoCall App</h1>
                         <br/><br/>
-                        <h4>SignIn to continue ...</h4>
+                        <h4 style={{color:"white"}}>SignIn to your Account</h4>
                         <StyledFirebaseAuth
                             uiConfig={this.uiConfig}
                             firebaseAuth={firebase.auth()}

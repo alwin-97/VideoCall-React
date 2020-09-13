@@ -1,6 +1,7 @@
 import React, {useRef, useEffect} from "react";
 import io from "socket.io-client";
 import logo from "./logo.png";
+import {Link} from 'react-router-dom';
 
 const Room = (props) => {
     const userVideo = useRef();
@@ -119,7 +120,7 @@ const Room = (props) => {
 
     function handleTrackEvent(e) {
         partnerVideo.current.srcObject = e.streams[0];
-    };
+    }
 
     function shareScreen() {
         navigator.mediaDevices.getDisplayMedia({cursor: true}).then(stream => {
@@ -131,26 +132,37 @@ const Room = (props) => {
         })
     }
 
+    function sendEmail(e) {
+        e.preventDefault();
+
+        alert('Mail with the Meeting Link is Send to the Other User !')
+    }
+
     return (
-        <div className={""} style={{backgroundColor: "grey"}}>
+        <div className={""} style={{backgroundColor: "black"}}>
+            <br/>
             <img src={logo} style={{height: 150}} alt={""}/>
             <br/>
-            <h5>Meeting Url : {window.location.href}</h5>
+            <h5 style={{color:"white"}}>Meeting Url : {window.location.href}</h5>
             <br/>
-            <label>Enter Email(s) to invite to the meeting</label>&nbsp;&nbsp;
-            <input type={"text"}/>&nbsp;&nbsp;
-            <button className={"btn btn-success"}>Send</button>
+            <form onSubmit={sendEmail} method={"post"}>
+                <label style={{color:"white"}}>Enter Email(s) to invite to the meeting</label>&nbsp;&nbsp;
+                <input type={"text"} name={"to_email"}/>&nbsp;&nbsp;
+                <input type={"submit"} className={"btn btn-success"} value={"Send"}/>
+            </form>
             <br/><br/>
             <div>
-                <video controls style={{height: 300}} autoPlay ref={userVideo}/>
-                <video controls style={{height: 300}} autoPlay ref={partnerVideo}/>
+                <video controls style={{width: 500}} autoPlay ref={userVideo}/>
+                &nbsp;&nbsp;
+                <video controls style={{width: 500}} autoPlay ref={partnerVideo}/>
             </div>
+            <br/><br/>
             <button className={"btn btn-success"}>Record Meeting</button>
             &nbsp;&nbsp;
             <button onClick={shareScreen} className={"btn btn-warning"}>Share Screen</button>
             &nbsp;&nbsp;
-            <button className={"btn btn-danger"}>End Call</button>
-            <br/><br/>
+            <Link to={'/'} className={"btn btn-danger"}>End Call</Link>
+            <br/><br/> <br/><br/>
             <div style={{color: "white"}}>
                 <span style={{textAlign: "center"}}>About US | Contact US | Support US </span>
                 <br/>

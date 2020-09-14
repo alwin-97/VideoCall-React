@@ -39,12 +39,12 @@ class Home extends Component {
         return (
             <div className="App">
                 {this.state.isSignedIn ? (
-                        <div style={{backgroundColor:"black"}}>
+                        <div style={{backgroundColor: "black"}}>
                             <br/><br/>
                             <img src={logo} style={{height: 150}} alt={""}/>
                             <br/><br/>
                             <h1 style={{color: "white"}}>Welcome {firebase.auth().currentUser.displayName}</h1>
-                            <p style={{color:"grey"}}>Simple and easy way to connect with friends !</p>
+                            <p style={{color: "grey"}}>Simple and easy way to connect with friends !</p>
                             <br/><br/>
                             <img src={firebase.auth().currentUser.photoURL} alt={"Profile Image"} height={"200"}/><br/>
                             <div style={{color: "white"}}>
@@ -54,7 +54,8 @@ class Home extends Component {
                             </div>
                             <br/><br/>
                             <button onClick={() => firebase.auth().signOut()} className={"btn btn-danger"}> Sign out !
-                            </button> &nbsp; &nbsp;
+                            </button>
+                            &nbsp; &nbsp;
                             <CreateRoom/> &nbsp; &nbsp;
                             <CreateTextRoom/>
                             <br/><br/><br/><br/><br/>
@@ -78,7 +79,7 @@ class Home extends Component {
                         <br/> <br/>
                         <h1 style={{color: "white"}}>Welcome to VideoCall App</h1>
                         <br/><br/>
-                        <h4 style={{color:"white"}}>SignIn to your Account</h4>
+                        <h4 style={{color: "white"}}>SignIn to your Account</h4>
                         <StyledFirebaseAuth
                             uiConfig={this.uiConfig}
                             firebaseAuth={firebase.auth()}

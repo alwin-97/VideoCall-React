@@ -3,6 +3,7 @@ import io from "socket.io-client";
 import logo from "./logo.png";
 import {Link} from 'react-router-dom';
 import Record from "./recording";
+import emailjs from 'emailjs-com';
 
 const Room = (props) => {
     const userVideo = useRef();
@@ -135,8 +136,15 @@ const Room = (props) => {
 
     function sendEmail(e) {
         e.preventDefault();
+        emailjs.sendForm('gmail', 'template_ttvbgw9', e.target, 'user_Y0k7xnXg4KCoslA8VrLfM')
+            .then((result) => {
+               // window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior)
+                alert('Mail with the Meeting Link is Send to the Other User !');
+            }, (error) => {
+                // console.log(error.text);
+                alert(error.toString());
+            });
 
-        alert('Mail with the Meeting Link is Send to the Other User !')
     }
 
     return (
@@ -149,6 +157,7 @@ const Room = (props) => {
             <form onSubmit={sendEmail} method={"post"}>
                 <label style={{color: "white"}}>Enter Email(s) to invite to the meeting</label>&nbsp;&nbsp;
                 <input type={"text"} name={"to_email"}/>&nbsp;&nbsp;
+                <input type={"hidden"} name={"link"} value={window.location.href}/>
                 <input type={"submit"} className={"btn btn-success"} value={"Send"}/>
             </form>
             <br/>

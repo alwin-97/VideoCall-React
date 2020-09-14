@@ -9,7 +9,6 @@ export default function Record() {
             <button onClick={toggleRecording} className={"btn btn-success"}>
                 {isRecording ? "Stop Recording" : "Start Recording"}
             </button>
-
             {!!recording && window.open(URL.createObjectURL(recording))
                 // (file_url = URL.createObjectURL(recording))
                 // <video autoPlay src={recording && URL.createObjectURL(recording)} />

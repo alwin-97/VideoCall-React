@@ -3,6 +3,7 @@ import io from "socket.io-client";
 import styled from "styled-components";
 import logo from "./logo.png";
 import {Link} from "react-router-dom";
+import emailjs from "emailjs-com";
 
 const Container = styled.div`
     height: 87vh;
@@ -220,12 +221,32 @@ const TextRoom = (props) => {
         )
     }
 
+    function sendEmail(e) {
+        e.preventDefault();
+        emailjs.sendForm('gmail', 'template_ttvbgw9', e.target, 'user_Y0k7xnXg4KCoslA8VrLfM')
+            .then((result) => {
+                // window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior)
+                alert('Mail with the Meeting Link is Send to the Other User !');
+            }, (error) => {
+                // console.log(error.text);
+                alert(error.toString());
+            });
+
+    }
+
     return (
         <div style={{backgroundColor: "black"}}>
         <Container>
             <img src={logo} style={{height: 150}} alt={""}/>
             <br/>
             <h5 style={{color:"white"}}>Room Url : {window.location.href}</h5>
+            <br/>
+            <form onSubmit={sendEmail} method={"post"}>
+                <label style={{color: "white"}}>Enter Email(s) to invite to the meeting</label>&nbsp;&nbsp;
+                <input type={"text"} name={"to_email"}/>&nbsp;&nbsp;
+                <input type={"hidden"} name={"link"} value={window.location.href}/>
+                <input type={"submit"} className={"btn btn-success"} value={"Send"}/>
+            </form>
             <br/>
             <Messages>
                 {messages.map(renderMessage)}

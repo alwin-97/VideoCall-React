@@ -11,6 +11,8 @@ firebase.initializeApp({
     authDomain: "videocall-4ec29.firebaseapp.com",
 });
 
+// IF sigined in Then the Dashboard, Else Sign in Screen
+
 class Home extends Component {
 
     state = {isSignedIn: false}

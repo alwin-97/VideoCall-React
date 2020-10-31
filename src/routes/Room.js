@@ -144,7 +144,6 @@ const Room = (props) => {
                 // console.log(error.text);
                 alert(error.toString());
             });
-
     }
 
     return (
